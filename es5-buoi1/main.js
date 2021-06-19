@@ -51,6 +51,7 @@ const PI = 3.14;
     2. Câu lệnh điều kiện:
         - if
         - if else
+        - Ternary operator (toán tử 3 ngôi)
         - else if
         - switch case: chỉ so sánh bằng
     
@@ -64,8 +65,8 @@ const PI = 3.14;
                 .Nếu biểu thức trước && mà false => dừng lại và trả lại giá trị ở vị trí đó
             + OR [||]: chỉ cần 1 thằng true thì cả biểu thức true tất cả false thì cả biểu thức mới false
             + NOT [!]: nghịch đảo giá trị ban đầu giá trị boolean hiện tại
-        - Truthy và Falsy value: điều kiện dừng của && là false và điều kiện dừng của | | là true
 
+        - Truthy và Falsy value: điều kiện dừng của && là false và điều kiện dừng của | | là true
             + false: 0, '', "", null, undefined, false, NaN (Not an Number)
             + true: còn lại
 
@@ -94,6 +95,12 @@ if (isAdult) {
 } else {
     console.log('FBI warning!!!');
 }
+
+
+//Ternary operator (toán tử 3 ngôi)
+1 === 1 ? console.log('Điều kiện đúng') : console.log('Điều kiện sai');
+var res = 1 === 2 ? true : false;
+console.log(res);
 
 
 // else if
@@ -152,10 +159,12 @@ console.log(result); //-2
         - Hàm ko tham số ko có giá trị trả về
         - Hàm có tham số ko có giá trị trả về
         - Hàm có tham số và có giá trị trả về
-        
+        - Hoisting: là cơ chế đẩy 1 biến dc khai báo lên trên cùng scope chứa nó => có thể truy cập dc biến  
+            + Đối với biến: hoisting chỉ xảy ra với từ khóa var
+            + Đối với fuc: hoisting chỉ xảy ra với declaration fuc
 */
 
-// declaration fuc
+// declaration fuction
 // Hàm ko tham số ko có giá trị trả về
 function sayHello() {
     console.log('Hello there');
@@ -179,3 +188,57 @@ sayHelloToSomeOne('Ngan');
 
 var gpa = calculateGPA(9, 7, 6);
 console.log(gpa);
+
+
+// _sayHello('Y'); undefine
+console.log(_sayHello);
+
+//expression fuction
+var _sayHello = function(name) {
+    console.log('Hello ' + name);
+}
+
+// Gọi function
+_sayHello('Tiep');
+
+
+//Hoisting
+// var demoHoisting;
+console.log(demoHoisting);
+var demoHoisting = 'hoisting';
+
+const hoistingConst = 'Hoisting';
+
+console.log(window);
+
+
+/*
+**BT: XẾP ĐIỂM TRUNG BÌNH VÀ XẾP LOẠI SINH VIÊN
+*/ 
+
+var tinhDiemTB = function(dToan, dLy, dHoa){
+    return (dToan + dLy + dHoa) / 3;
+}
+
+var xepLoai = function (){
+    var dtb = tinhDiemTB(5, 8, 7);
+    var xepLoai = '';
+
+    if(dtb >= 9 && dtb <= 10){
+        xepLoai = 'Xuất sắc';
+    }else if(dtb >= 8 && dtb < 9){
+        xepLoai = 'Giỏi';
+    }else if(dtb >= 7 && dtb < 8){
+        xepLoai = 'Khá';
+    }else if(dtb >= 6 && dtb < 7){
+        xepLoai = 'TB Khá';
+    }else if(dtb >= 5 && dtb < 6){
+        xepLoai = 'Trung bình';
+    }else{
+        xepLoai = 'Yếu';
+    }
+
+    console.log('Xếp Loại ' + xepLoai);
+}
+
+xepLoai();
